@@ -12,7 +12,7 @@ public class TrelloAutomationTest {
 
     @Test
     public void testCreateBoardAndCards() {
-        // Board oluşturma
+        // Create board
         Response boardResponse = trelloPage.createBoard("Test Board");
         System.out.println("BOARD CREATION - Response Status: " + boardResponse.getStatusCode());
         System.out.println("BOARD CREATION - Response Body: " + boardResponse.asString());
@@ -20,13 +20,13 @@ public class TrelloAutomationTest {
         System.out.println("BOARD CREATION - Board ID: " + boardId);
         System.out.println("---------------------------");
 
-        // Board'a ait listeleri alma
+        // Get lists on board
         Response listsResponse = trelloPage.getListsOnBoard(boardId);
         System.out.println("LISTS ON BOARD - Response Status: " + listsResponse.getStatusCode());
         System.out.println("LISTS ON BOARD - Response Body: " + listsResponse.asString());
         System.out.println("---------------------------");
 
-        // Liste oluşturma
+        // Create list
         Response listResponse = trelloPage.createListOnBoard(boardId, "New List");
         System.out.println("LIST CREATION - Response Status: " + listResponse.getStatusCode());
         System.out.println("LIST CREATION - Response Body: " + listResponse.asString());
@@ -34,7 +34,7 @@ public class TrelloAutomationTest {
         System.out.println("LIST CREATION - Created List ID: " + listId);
         System.out.println("---------------------------");
 
-        // Liste oluşturulduğu ve boş olduğu doğrulanır
+        // Verify list creation and it's empty
         Response getListResponse = trelloPage.getListById(listId);
         System.out.println("GET LIST BY ID - Response Status: " + getListResponse.getStatusCode());
         System.out.println("GET LIST BY ID - Response Body: " + getListResponse.asString());
@@ -44,7 +44,7 @@ public class TrelloAutomationTest {
         System.out.println("GET CARDS BY LIST ID (EMPTY) - Response Body: " + getEmptyListResponse.asString());
         System.out.println("---------------------------");
 
-        // Kart oluşturma ve oluştuğunun kontrolü
+        // Create card and verify it's created
         Response cardResponse1 = trelloPage.createCard(listId, "Card 1");
         System.out.println("CARD 1 CREATION - Response Status: " + cardResponse1.getStatusCode());
         System.out.println("CARD 1 CREATION - Response Body: " + cardResponse1.asString());
@@ -60,7 +60,7 @@ public class TrelloAutomationTest {
         System.out.println("GET CARDS BY LIST ID - Response Body: " + getCardResponse1.asString());
         System.out.println("---------------------------");
 
-        // Kartlardan birini rastgele güncelleme
+        // Randomly update one of the cards
         Random rand = new Random();
         String cardToUpdate = rand.nextBoolean() ? cardId1 : cardId2;
         String newCardName = "Updated Card";
@@ -69,7 +69,7 @@ public class TrelloAutomationTest {
         System.out.println("CARD UPDATE - Response Body: " + updateResponse.asString());
         System.out.println("---------------------------");
 
-        // Kartları silme
+        // Delete cards
         Response deleteCardResponse1 = trelloPage.deleteCard(cardId1);
         System.out.println("DELETE CARD 1 - Response Status: " + deleteCardResponse1.getStatusCode());
         System.out.println("DELETE CARD 1 - Response Body: " + deleteCardResponse1.asString());
@@ -80,7 +80,7 @@ public class TrelloAutomationTest {
         System.out.println("DELETE CARD 2 - Response Body: " + deleteCardResponse2.asString());
         System.out.println("---------------------------");
 
-        // Board'u silme
+        // Delete board
         Response deleteBoardResponse = trelloPage.deleteBoard(boardId);
         System.out.println("DELETE BOARD - Response Status: " + deleteBoardResponse.getStatusCode());
         System.out.println("DELETE BOARD - Response Body: " + deleteBoardResponse.asString());

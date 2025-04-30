@@ -9,7 +9,7 @@ public class TrelloPage {
     private String apiKey = "API_KEY";  // Add your API_KEY here
     private String token = "TOKEN";  //Add your TOKEN here.
 
-    // Board oluşturma
+    // Create board
     public Response createBoard(String name) {
         Response response = given()
                 .header("Accept", "application/json")
@@ -23,7 +23,7 @@ public class TrelloPage {
         return response;
     }
 
-    // Liste alma
+    // Get lists on board
     public Response getListsOnBoard(String boardId) {
         Response response = given()
                 .queryParam("key", apiKey)
@@ -35,7 +35,7 @@ public class TrelloPage {
         return response;
     }
 
-    // Bir board üzerinde liste oluşturma
+    // Create list on board
     public Response createListOnBoard(String boardId, String name) {
         Response response = given()
                 .header("Accept", "application/json")
@@ -49,7 +49,7 @@ public class TrelloPage {
         return response;
     }
 
-    // Listeyi ID ile alma
+    // Get list by ID
     public Response getListById(String listId) {
         Response response = given()
                 .queryParam("key", apiKey)
@@ -62,7 +62,7 @@ public class TrelloPage {
         return response;
     }
 
-    // Listeyi ID ile kartları alma
+    // Get cards by list ID
     public Response getCardsByListId(String listId) {
         Response response = given()
                 .queryParam("key", apiKey)
@@ -82,7 +82,7 @@ public class TrelloPage {
         return response;
     }
 
-    // Kart oluşturma
+    // Create card
     public Response createCard(String listId, String name) {
         Response response = given()
                 .header("Accept", "application/json")
@@ -98,7 +98,7 @@ public class TrelloPage {
         return response;
     }
 
-    // Kart güncelleme
+    // Update card
     public Response updateCard(String cardId, String name) {
         Response response = given()
                 .header("Accept", "application/json")
@@ -113,7 +113,7 @@ public class TrelloPage {
         return response;
     }
 
-    // Kart silme
+    // Delete card
     public Response deleteCard(String cardId) {
         Response response = given()
                 .header("Content-Type", "application/json")
@@ -126,7 +126,7 @@ public class TrelloPage {
         return response;
     }
 
-    // Board silme
+    // Delete board
     public Response deleteBoard(String boardId) {
         Response response = given()
                 .header("Content-Type", "application/json")
