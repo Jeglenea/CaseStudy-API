@@ -6,8 +6,8 @@ import static io.restassured.RestAssured.*;
 public class TrelloPage {
 
     private String baseUrl = "https://api.trello.com/1";
-    private String apiKey = "2ff7eee6c601fe460efc5b67dc19383f";  // API anahtarınızı buraya ekleyin
-    private String token = "ATTA0a16e2b4938b6de5e684086c96df4dfdf108c12bf942c96e15fa634d7e11d578A6E02DA5";  // Tokenınızı buraya ekleyin
+    private String apiKey = "API_KEY";  // API anahtarınızı buraya ekleyin
+    private String token = "TOKEN";  // Tokenınızı buraya ekleyin
 
     // Board oluşturma
     public Response createBoard(String name) {
